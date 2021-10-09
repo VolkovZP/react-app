@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import './App.css';
 import AlohaDashboard from './components/AlohaDashboard';
 import SelectedUserList from './components/SelectedUserList';
@@ -28,28 +28,23 @@ const usersDB = [
 ]
 
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { users: usersDB.map((user) => ({ ...user, isSelected: false })) }
-  }
 
-  setUsers = (newUsers) => this.setState({ users: newUsers });
+export default function App(props) {
 
-  render() {
-    const { users } = this.state
-    return (
-      <>
-        {/* <AlohaDashboard /> */}
-        <header>
-          {<SelectedUserList users={users} />}
-        </header>
-        <main>
-          <UserList users={users} setUsers={this.setUsers} />
-        </main>
-      </>
-    )
-  }
+  const [users, setUsers] = useState(usersDB.map((user) => ({ ...user, isSelected: false })));
+  const [isHidden, setIsHidden] = useState(true);
+  const hideHandler = () => setIsHidden(!isHidden);
+
+  return (
+    <>
+      {/* <AlohaDashboard /> */}
+      <header>
+        {<SelectedUserList users={users} />}
+      </header>
+      <main>
+        <button onClick={hideHandler}>hide</button>
+        {isHidden && <UserList users={users} setUsers={setUsers} />}
+      </main>
+    </>
+  )
 }
-
-export default App;

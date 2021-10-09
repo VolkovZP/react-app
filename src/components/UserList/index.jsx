@@ -1,30 +1,26 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import UserCard from "./UserCard";
 
-class UserList extends Component {
-    toggleUserSelection = (id) => {
-        const { users, setUsers } = this.props;
+
+export default function UserList(props) {
+
+    const { users, setUsers } = props;
+
+    const toggleUserSelection = (id) => {
         setUsers(
             users.map((user) => ({
                 ...user,
-                isSelected: user.id === id ? !user.isSelected : user.isSelected,
+                isSelected: id === user.id ? !user.isSelected : user.isSelected,
             }))
         );
     };
-
-    mapUser = (user) => {
-        return <UserCard key={user.id} user={user} toggleUserSelection={this.toggleUserSelection} />;
+    const mapUser = (user) => {
+        return <UserCard key={user.id} user={user} toggleUserSelection={toggleUserSelection} />;
     };
-
-    render() {
-        const { users } = this.props;
-        return (
-            <section>
-                <h1>USER LIST FROM DB</h1>
-                {users.map(this.mapUser)}
-            </section>
-        );
-    }
+    return (
+        <section>
+            <h1>USER LIST FROM DB</h1>
+            {users.map(mapUser)}
+        </section>
+    );
 }
-
-export default UserList;
