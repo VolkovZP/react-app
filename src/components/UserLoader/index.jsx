@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react/cjs/react.development';
 import Spinner from '../Spinner';
+import { getUsers } from '../../api'
 
 export default function UserLoader() {
     const [user, setUser] = useState([]);
@@ -8,11 +9,10 @@ export default function UserLoader() {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        fetch('https://randomuser.me/api/')
-            .then(data => data.json())
+        getUsers() //fetch('...')
             .then(d => setUser(d.results))
             .catch(error => setError(error))
-            .finally(() => setIsFetching(false))
+            .finally(() => setIsFetching(!isFething))
     }, [])
 
     if (isFething) return <div><Spinner /></div>
