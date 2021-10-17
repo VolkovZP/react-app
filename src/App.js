@@ -7,6 +7,7 @@ import SelectedUserList from './components/SelectedUserList';
 import SignUpForm from './components/SignUpForm';
 import Timer from './components/Timer';
 import UserList from './components/UserList';
+import UserLoader from './components/UserLoader';
 
 const usersDB = [
   {
@@ -50,7 +51,7 @@ export default function App(props) {
 
   return (
     <>
-      <AlohaDashboard />
+      {/* <AlohaDashboard />
       <header>{<SelectedUserList users={users} />}</header>
       <main>
         <button onClick={hideHandler}>hide</button>
@@ -62,7 +63,8 @@ export default function App(props) {
             <img src='https://images4.alphacoders.com/157/157554.jpg' alt='' />
           </ResponsiveMediaWrapper>
         </div>
-      </main>
+      </main> */}
+      <UserLoader />
     </>
   );
 }
