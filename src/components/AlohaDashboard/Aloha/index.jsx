@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-export default function Aloha(props) {
+export default function Aloha (props) {
+  const { userId, deleteUser, name } = props;
 
-    const { userId, deleteUser, name } = props;
+  const [isGreeting, setIsGreeting] = useState(true);
 
-    const [isGreeting, setIsGreeting] = useState(true);
+  const handlerAloha = () => setIsGreeting(!isGreeting);
 
-    const handlerAloha = () => setIsGreeting(!isGreeting);
+  const deleting = () => deleteUser(userId);
 
-    const deleting = () => deleteUser(userId);
-
-    return (
-        <>
-            <h1>{isGreeting ? 'Hello' : 'Bye'} {name}</h1>
-            <button onClick={handlerAloha}>switch</button>
-            <button onClick={deleting}>delete</button>
-        </>
-    )
+  return (
+    <>
+      <h1>
+        {isGreeting ? 'Hello' : 'Bye'} {name}
+      </h1>
+      <button onClick={handlerAloha}>switch</button>
+      <button onClick={deleting}>delete</button>
+    </>
+  );
 }
