@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react/cjs/react.development';
+import Spinner from '../Spinner';
 
 export default function UserLoader() {
     const [user, setUser] = useState([]);
@@ -14,7 +15,7 @@ export default function UserLoader() {
             .finally(() => setIsFetching(false))
     }, [])
 
-    if (isFething) return <div>LOADER....</div>
+    if (isFething) return <div><Spinner /></div>
     if (error) return <div>EROR</div>
     return (
         <>
