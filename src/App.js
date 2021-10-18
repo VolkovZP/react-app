@@ -1,70 +1,50 @@
 import { useState } from 'react';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
-import AlohaDashboard from './components/AlohaDashboard';
-import AutoCounter from './components/AutoCounter';
-import ResponsiveMediaWrapper from './components/ResponsiveMediaWrapper';
-import SelectedUserList from './components/SelectedUserList';
-import SignUpForm from './components/SignUpForm';
-import Timer from './components/Timer';
-import UserList from './components/UserList';
-import UserLoader from './components/UserLoader';
 
-const usersDB = [
-  {
-    id: 1,
-    firstname: 'John',
-    lastname: 'Doe',
-  },
-  {
-    id: 2,
-    firstname: 'Mark',
-    lastname: 'Lorem',
-  },
-  {
-    id: 3,
-    firstname: 'Anderson',
-    lastname: 'Silva',
-  },
-  {
-    id: 4,
-    firstname: 'Olga',
-    lastname: 'Kurilenko',
-  },
-];
 
-export default function App(props) {
-  const [users, setUsers] = useState(
-    usersDB.map(user => ({ ...user, isSelected: false }))
-  );
-  const [isHidden, setIsHidden] = useState(true);
-  const hideHandler = () => setIsHidden(!isHidden);
-
-  const addUser = user => {
-    const newUser = [...users];
-    const lastId = newUser.reduce(
-      (acc, cur) => (cur.id > acc ? cur.id : acc),
-      0
-    );
-    newUser.push({ ...user, id: lastId + 1 });
-    setUsers(newUser);
-  };
+function App(props) {
 
   return (
-    <>
-      {/* <AlohaDashboard />
-      <header>{<SelectedUserList users={users} />}</header>
-      <main>
-        <button onClick={hideHandler}>hide</button>
-        // {isHidden && <UserList users={users} setUsers={setUsers} />}
-        <Timer />
-        <SignUpForm addUser={addUser} />
-        <div style={{ width: '50%' }}>
-          <ResponsiveMediaWrapper>
-            <img src='https://images4.alphacoders.com/157/157554.jpg' alt='' />
-          </ResponsiveMediaWrapper>
-        </div>
-      </main> */}
-      <UserLoader />
-    </>
+    <BrowserRouter>
+      <nav>
+        <ul>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
+          <li>
+            <Link to='/contacts'>Contacts</Link>
+          </li>
+          <li>
+            <Link to='/about'>about</Link>
+          </li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path='/' exact><Home /></Route>
+        <Route path='/contacts'><Contacts /></Route>
+        <Route path='/about' component={About} />
+        <Route path='/*' component={Error} />
+      </Switch>
+    </BrowserRouter>
   );
 }
+
+const Home = () => <div>HOME</div>
+const Contacts = () => <div>contact</div>
+const About = (props) => {
+  console.log(props)
+  setTimeout(() => {
+    props.history.push('/');
+  }, 3000)
+  return <div>About</div>;
+}
+const Error = (props) => {
+  return <div>ERROR 404...PAGE NOT FOUND.</div>
+}
+export default App;
