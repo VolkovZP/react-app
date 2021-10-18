@@ -3,32 +3,25 @@ import {
   BrowserRouter,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import './App.css';
-
-
+import Header from './components/Header';
+import TimerPage from './pages/TimerPage'
+import SignUpFormPage from './pages/SignUpFormPage'
+import UserLoaderFile from './components/UserLoaderFile';
+import PhoneLoader from './components/PhoneLoader';
 function App(props) {
-
   return (
     <BrowserRouter>
-      <nav>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/contacts'>Contacts</Link>
-          </li>
-          <li>
-            <Link to='/about'>about</Link>
-          </li>
-        </ul>
-      </nav>
+      <Header />
       <Switch>
         <Route path='/' exact><Home /></Route>
         <Route path='/contacts'><Contacts /></Route>
         <Route path='/about' component={About} />
+        <Route path='/timer' component={TimerPage} />
+        <Route path='/signform' component={SignUpFormPage} />
+        <Route path='/userloader' component={UserLoaderFile} />
+        <Route path='/phonesloader' component={PhoneLoader} />
         <Route path='/*' component={Error} />
       </Switch>
     </BrowserRouter>
