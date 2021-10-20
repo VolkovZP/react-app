@@ -10,20 +10,28 @@ import TimerPage from './pages/TimerPage'
 import SignUpFormPage from './pages/SignUpFormPage'
 import UserLoaderFile from './components/UserLoaderFile';
 import PhoneLoader from './components/PhoneLoader';
+import Tree from './components/Tree';
+import { UserContext } from '../src/contexts'
+
+const user = 'John Doe'
+
 function App(props) {
   return (
     <BrowserRouter>
-      <Header />
-      <Switch>
-        <Route path='/' exact><Home /></Route>
-        <Route path='/contacts'><Contacts /></Route>
-        <Route path='/about' component={About} />
-        <Route path='/timer' component={TimerPage} />
-        <Route path='/signform' component={SignUpFormPage} />
-        <Route path='/userloader' component={UserLoaderFile} />
-        <Route path='/phonesloader' component={PhoneLoader} />
-        <Route path='/*' component={Error} />
-      </Switch>
+      <UserContext.Provider value={user}>
+        <Header />
+        <Switch>
+          <Route path='/' exact><Home /></Route>
+          <Route path='/contacts'><Contacts /></Route>
+          <Route path='/about' component={About} />
+          <Route path='/timer' component={TimerPage} />
+          <Route path='/signform' component={SignUpFormPage} />
+          <Route path='/userloader' component={UserLoaderFile} />
+          <Route path='/phonesloader' component={PhoneLoader} />
+          <Route path='/*' component={Error} />
+        </Switch>
+        <Tree />
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }
@@ -41,3 +49,6 @@ const Error = (props) => {
   return <div>ERROR 404...PAGE NOT FOUND.</div>
 }
 export default App;
+
+
+

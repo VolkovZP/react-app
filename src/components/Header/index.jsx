@@ -12,8 +12,6 @@ function Header() {
                     <NavItem to='/about'>about</NavItem>
                     <NavItem to='/timer'>timer</NavItem>
                     <NavItem to='/signform'>sign in</NavItem>
-                    <NavItem to='/userloader'>user loader</NavItem>
-                    <NavItem to='/phonesloader'>phone loader</NavItem>
                 </ul>
             </nav>
         </header>
