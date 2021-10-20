@@ -11,14 +11,18 @@ import SignUpFormPage from './pages/SignUpFormPage'
 import UserLoaderFile from './components/UserLoaderFile';
 import PhoneLoader from './components/PhoneLoader';
 import Tree from './components/Tree';
-import { UserContext } from '../src/contexts'
-
-const user = 'John Doe'
+import { ThemeContaxt } from '../src/contexts'
+import constants from '../src/constants'
 
 function App(props) {
+  const { THEMES: { DARK, LIGHT } } = constants;
+
+
+  const [theme, setTheme] = useState(LIGHT)
+
   return (
     <BrowserRouter>
-      <UserContext.Provider value={user}>
+      <ThemeContaxt.Provider value={[theme, setTheme]}>
         <Header />
         <Switch>
           <Route path='/' exact><Home /></Route>
@@ -30,8 +34,7 @@ function App(props) {
           <Route path='/phonesloader' component={PhoneLoader} />
           <Route path='/*' component={Error} />
         </Switch>
-        <Tree />
-      </UserContext.Provider>
+      </ThemeContaxt.Provider>
     </BrowserRouter>
   );
 }
