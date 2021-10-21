@@ -1,8 +1,5 @@
 import React from 'react'
-import style from './Header.module.sass';
-import NavItem from './NavItem/inde';
 import { ThemeContaxt } from '../../contexts/'
-import cx from 'classnames'
 import constants from '../../constants'
 
 
@@ -22,4 +19,4 @@ function WithTheme(ReturnedComponent) {
 
 
 
-export default Header
+export default WithTheme
