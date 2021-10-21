@@ -13,6 +13,7 @@ import PhoneLoader from './components/PhoneLoader';
 import Tree from './components/Tree';
 import { ThemeContaxt } from '../src/contexts'
 import constants from '../src/constants'
+import Home from './components/Home'
 
 function App(props) {
   const { THEMES: { DARK, LIGHT } } = constants;
@@ -39,7 +40,6 @@ function App(props) {
   );
 }
 
-const Home = () => <div>HOME</div>
 const Contacts = () => <div>contact</div>
 const About = (props) => {
   console.log(props)
