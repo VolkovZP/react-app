@@ -8,11 +8,13 @@ const Home = () => {
     const { THEMES: { LIGHT, DARK } } = constants
     const [theme, setTheme] = useContext(ThemeContaxt)
 
+    const classes = cx(style.container, {
+        [style.light]: theme === LIGHT,
+        [style.dark]: theme === DARK
+    })
+
     return (
-        <div className={cx(style.container, {
-            [style.light]: theme === LIGHT,
-            [style.dark]: theme === DARK
-        })}>Home page</div>
+        <div className={classes}>Home page</div>
     )
 }
 

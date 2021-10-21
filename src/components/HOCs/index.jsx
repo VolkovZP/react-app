@@ -1,22 +1,12 @@
-import React from 'react'
-import { ThemeContaxt } from '../../contexts/'
-import constants from '../../constants'
+import React, { useContext } from 'react'
+import { isAdminContaxt } from '../../contexts/'
+import { Redirect } from 'react-router-dom'
 
-
-
-function WithTheme(ReturnedComponent) {
-    const { THEMES: { LIGHT, DARK } } = constants
-    return function ReturnedComponent(props) {
-        return (
-            <ThemeContaxt.Consumer>
-                {([theme, setTheme]) => {
-                    return <ReturnedComponent theme={theme} setTheme={setTheme} {...props} />
-                }}
-            </ThemeContaxt.Consumer>
-        )
+function onlyAdmin(ContainerComponent) {
+    return function OnlyAdminComponent(props) {
+        const isAdmin = useContext(isAdminContaxt)
+        return isAdmin ? <ContainerComponent {...props} /> : <Redirect to='/' />
     }
 }
 
-
-
-export default WithTheme
+export default onlyAdmin
