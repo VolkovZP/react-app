@@ -1,6 +1,6 @@
 import React from 'react';
-import Spinner from '../components/Spinner';
-import { useData } from '../hooks';
+import Spinner from '../Spinner';
+import { useData } from '../../hooks';
 
 function CustomHookUserLoader() {
     const load = () => {

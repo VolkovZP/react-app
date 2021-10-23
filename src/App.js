@@ -10,12 +10,15 @@ import TimerPage from './pages/TimerPage'
 import SignUpFormPage from './pages/SignUpFormPage'
 import UserLoaderFile from './components/UserLoaderFile';
 import PhoneLoader from './components/PhoneLoader';
-import Tree from './components/Tree';
 import { ThemeContaxt, isAdminContaxt } from '../src/contexts'
 import constants from '../src/constants'
 import Home from './components/Home'
 import onlyAdmin from './components/HOCs';
-import CustomHookUserLoader from './CustomHookUserLoader';
+import CustomHookUserLoader from './components/CustomHookUserLoader';
+import ReduserHook from './components/ReduserHook';
+import SignUpForm from './components/SignUpForm';
+import AlohaDashboard from './components/AlohaDashboard';
+import ReduseTestings from './components/ReduseTesings';
 
 function App(props) {
   const { THEMES: { DARK, LIGHT } } = constants;
@@ -34,11 +37,13 @@ function App(props) {
             <Route path='/contacts'><Contacts /></Route>
             <Route path='/about' component={About} />
             <Route path='/admin' component={onlyAdmin(Admin)} />
+            <Route path='/AlohaDashboard' component={AlohaDashboard} />
             <Route path='/timer' component={TimerPage} />
             <Route path='/signform' component={SignUpFormPage} />
             <Route path='/userloader' component={UserLoaderFile} />
             <Route path='/hooksUser' component={CustomHookUserLoader} />
             <Route path='/phonesloader' component={PhoneLoader} />
+            <Route path='/reduser' component={ReduserHook} />
             <Route path='/*' component={Error} />
           </Switch>
         </isAdminContaxt.Provider>
@@ -48,6 +53,9 @@ function App(props) {
 }
 
 const Admin = () => <div>ADMIN PAGE</div>
+
+
+
 
 const Contacts = () => <div>contact</div>
 const About = (props) => {
