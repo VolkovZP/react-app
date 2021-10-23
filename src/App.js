@@ -15,6 +15,7 @@ import { ThemeContaxt, isAdminContaxt } from '../src/contexts'
 import constants from '../src/constants'
 import Home from './components/Home'
 import onlyAdmin from './components/HOCs';
+import CustomHookUserLoader from './CustomHookUserLoader';
 
 function App(props) {
   const { THEMES: { DARK, LIGHT } } = constants;
@@ -36,6 +37,7 @@ function App(props) {
             <Route path='/timer' component={TimerPage} />
             <Route path='/signform' component={SignUpFormPage} />
             <Route path='/userloader' component={UserLoaderFile} />
+            <Route path='/hooksUser' component={CustomHookUserLoader} />
             <Route path='/phonesloader' component={PhoneLoader} />
             <Route path='/*' component={Error} />
           </Switch>
