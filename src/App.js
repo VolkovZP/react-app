@@ -18,7 +18,7 @@ import CustomHookUserLoader from './components/CustomHookUserLoader';
 import ReduserHook from './components/ReduserHook';
 import SignUpForm from './components/SignUpForm';
 import AlohaDashboard from './components/AlohaDashboard';
-import ReduseTestings from './components/ReduseTesings';
+import Chat from './components/Chat';
 
 function App(props) {
   const { THEMES: { DARK, LIGHT } } = constants;
@@ -44,6 +44,7 @@ function App(props) {
             <Route path='/hooksUser' component={CustomHookUserLoader} />
             <Route path='/phonesloader' component={PhoneLoader} />
             <Route path='/reduser' component={ReduserHook} />
+            <Route path='/chat' component={Chat} />
             <Route path='/*' component={Error} />
           </Switch>
         </isAdminContaxt.Provider>

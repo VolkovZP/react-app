@@ -1,26 +1,9 @@
 import React, { useReducer } from 'react';
 import style from './SignUpForm.module.css';
 import FormInput from './FormInput';
+import { initialValues, reducer } from './reducer'
 
 
-const initialValues = {
-  firstname: '',
-  lastname: '',
-  email: '',
-  password: '',
-};
-
-const reducer = (state, action) => {
-  // console.log(state, action)
-  const { name, value } = action;
-
-  const newState = {
-    ...state,
-    [name]: value,
-  };
-
-  return newState;
-};
 
 export default function SignUpForm(props) {
 
@@ -36,14 +19,12 @@ export default function SignUpForm(props) {
     dispatch({ name, value });
   };
   const { firstname, lastname, email, password } = state;
-  // console.log(state)
 
 
   const validatePassword = value => {
     const regex = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;
     return value.length === 0 || regex.test(value);
   };
-
 
   return (
     <form className={style.container} onSubmit={submitHandler}>
