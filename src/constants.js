@@ -1,8 +1,8 @@
 const constants = {
-    THEMES: {
-        DARK: 'DARK',
-        LIGHT: 'LIGHT',
-    }
-}
+  THEMES: {
+    DARK: 'DARK',
+    LIGHT: 'LIGHT',
+  },
+};
 
-export default constants
+export default constants;

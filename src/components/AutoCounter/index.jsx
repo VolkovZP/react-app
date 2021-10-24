@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react/cjs/react.development';
 
-export default function AutoCounter() {
+export default function AutoCounter () {
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(1);
   const [isIncrement, setIsIncrement] = useState(true);
@@ -9,7 +9,8 @@ export default function AutoCounter() {
   const [ms, setMs] = useState(1000);
 
   const increment = () => setIsIncrement(!isIncrement);
-  const addCount = () => isIncrement ? setCount(count + step) : setCount(count - step);
+  const addCount = () =>
+    isIncrement ? setCount(count + step) : setCount(count - step);
   const addStap = ({ target: { value } }) => setStep(+value);
   const toogleAutoClick = () => setIsAutoClicks(!isAutoClicks);
 

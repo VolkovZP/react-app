@@ -1,12 +1,9 @@
 import React, { useReducer } from 'react';
 import style from './SignUpForm.module.css';
 import FormInput from './FormInput';
-import { initialValues, reducer } from './reducer'
-
-
+import { initialValues, reducer } from './reducer';
 
 export default function SignUpForm(props) {
-
   const [state, dispatch] = useReducer(reducer, initialValues);
 
   const submitHandler = event => {
@@ -19,7 +16,6 @@ export default function SignUpForm(props) {
     dispatch({ name, value });
   };
   const { firstname, lastname, email, password } = state;
-
 
   const validatePassword = value => {
     const regex = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;
@@ -60,12 +56,9 @@ export default function SignUpForm(props) {
   );
 }
 
-
-
 // import React, { Component, useState } from 'react';
 // import style from './SignUpForm.module.css';
 // import FormInput from './FormInput';
-
 
 // const intialValues = {
 //   firstname: '',
@@ -142,6 +135,3 @@ export default function SignUpForm(props) {
 // }
 
 // export default SignUpForm;
-
-
-

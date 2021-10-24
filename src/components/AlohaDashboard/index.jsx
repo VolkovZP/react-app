@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AlohaSortedList from './AlohaSortedList';
 import SignUpForm from '../SignUpForm';
-export default function AlohaDashboard(props) {
+export default function AlohaDashboard (props) {
   const [users, setUsers] = useState([
     {
       id: 1,
@@ -16,7 +16,7 @@ export default function AlohaDashboard(props) {
   const deleteUser = userId =>
     setUsers(users.filter(item => item.id !== userId));
 
-  const registerUser = (user) => {
+  const registerUser = user => {
     const newUsersArray = [...users];
     const lastId = newUsersArray.reduce(
       (acc, cur) => (cur.id > acc ? cur.id : acc),
@@ -25,9 +25,6 @@ export default function AlohaDashboard(props) {
     newUsersArray.push({ ...user, id: lastId + 1 });
     setUsers(newUsersArray);
   };
-
-
-
 
   return (
     <>
