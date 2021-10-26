@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AlohaSortedList from './AlohaSortedList';
-import SignUpForm from '../SignUpForm';
-export default function AlohaDashboard (props) {
+import SignUpForm from '../forms/SignUpForm';
+export default function AlohaDashboard(props) {
   const [users, setUsers] = useState([
     {
       id: 1,
